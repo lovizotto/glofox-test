@@ -13,10 +13,11 @@ import { ColorSchemeName, Pressable } from 'react-native';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import NotFoundScreen from '../screens/NotFoundScreen';
-import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
+import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../../../types';
 import LinkingConfiguration from './LinkingConfiguration';
-import BeersScreen from "../screens/BeersStack/BeersScreen";
-import AlcoholFreeScreen from "../screens/BeersStack/AlcoholFreeScreen";
+import BeerScreen from "../screens/BeerStack/BeerScreen";
+import AlcoholFreeScreen from "../screens/BeerStack/AlcoholFreeScreen";
+import BeerStack from "../screens/BeerStack";
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -29,7 +30,7 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
 }
 
 /**
- * A root BeersStack navigator is often used for displaying modals on top of all other content.
+ * A root BeerStack navigator is often used for displaying modals on top of all other content.
  * https://reactnavigation.org/docs/modal
  */
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -60,9 +61,9 @@ function BottomTabNavigator() {
       }}>
       <BottomTab.Screen
         name="Beers"
-        component={BeersScreen}
+        component={BeerStack}
         options={({ navigation }: RootTabScreenProps<'Beers'>) => ({
-          title: 'BeersScreen',
+          title: 'BeerScreen',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
           headerRight: () => (
             <Pressable

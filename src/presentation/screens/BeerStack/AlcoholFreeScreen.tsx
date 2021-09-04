@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {StyleSheet} from 'react-native';
-import {RootTabScreenProps} from '../../types';
+
 import {View} from "../../components/Themed";
 
-export default function BeersScreen({ navigation }: RootTabScreenProps<'Beers'>) {
+export default function AlcoholFreeScreen() {
   return (
     <View style={styles.container}>
 
