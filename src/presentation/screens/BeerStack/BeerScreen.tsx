@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Button, Image, StyleSheet, Switch} from 'react-native';
 import {Text, View} from "../../components/Themed";
-import {GetRandomBeer} from "../../../domain/usecases/get-random-beer";
+import {GetRandomBeer} from "../../../domain/usecases/GetRandomBeer";
 import {useCallback, useEffect, useState} from "react";
 import {Beer} from "../../../domain/models/Beer";
 
@@ -15,7 +15,7 @@ const BeerScreen: React.FC<BeersScreenProps> = ({getRandomBeer}) => {
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
     const randomBeer = useCallback((isAlcoholic) => {
-        getRandomBeer.fetch(isAlcoholic)
+        getRandomBeer.get(isAlcoholic)
             .then((res) => {
                 setBeer(res);
             });
@@ -40,6 +40,9 @@ const BeerScreen: React.FC<BeersScreenProps> = ({getRandomBeer}) => {
                             height: 200,
                         }}
                         resizeMode={"contain"}
+                        loadingIndicatorSource={{
+                            uri: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fstackoverflow.com%2Fquestions%2F42254531%2Fxamarin-ios-activity-indicator-with-another-image&psig=AOvVaw3SIUbWJ_e0UjzIRb6SlVQw&ust=1630800463524000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCLiApKSD5PICFQAAAAAdAAAAABAI"
+                        }}
                     />
                     <Text>{beer.name}</Text>
                 </>

@@ -20,9 +20,9 @@ const linking: LinkingOptions<RootStackParamList> = {
               BeersScreen: 'BeersScreen',
             },
           },
-          AlcoholFree: {
+          ListBeers: {
             screens: {
-              AlcoholFreeScreen: 'Alcoholic BeerScreen',
+              ListBeersScreen: 'ListBeersScreen',
             },
           },
         },

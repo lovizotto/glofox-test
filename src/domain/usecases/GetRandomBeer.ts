@@ -1,7 +1,7 @@
 import {Beer} from "../models/Beer";
 
 export interface GetRandomBeer {
-    fetch(params?: GetRandomBeer.Params): Promise<Beer>
+    get(params?: GetRandomBeer.Params): Promise<Beer>
 }
 
 export namespace GetRandomBeer {

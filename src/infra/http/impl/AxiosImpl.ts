@@ -1,16 +1,16 @@
 import axios, {AxiosResponse} from "axios";
-import {AxiosHttpClient} from "./AxiosHttpClient";
+import {HttpClient} from "../HttpClient";
 
-export class GetBeerHttp implements AxiosHttpClient {
-    async fetch(params: AxiosHttpClient.Params): Promise<any> {
+export class AxiosImpl implements HttpClient {
+    async get(params: HttpClient.Params): Promise<any> {
         let axiosResponse: AxiosResponse;
         try {
             axiosResponse = await axios.get(
                 params.url,
-                    {
+                {
                     headers: params.headers
                 })
-        } catch(error) {
+        } catch (error) {
             axiosResponse = error.response
         }
         return axiosResponse;
