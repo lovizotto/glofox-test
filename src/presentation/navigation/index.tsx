@@ -8,7 +8,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {DarkTheme, DefaultTheme, NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import * as React from 'react';
-import {ColorSchemeName} from 'react-native';
+import {Button, ColorSchemeName} from 'react-native';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
@@ -17,6 +17,7 @@ import {RootStackParamList, RootTabParamList} from '../../../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import BeerStack from "../screens/BeerStack";
 import ListBeersStack from "../screens/ListBeersStack";
+import SearchModal from "../screens/ListBeersStack/SearchModal";
 
 export default function Navigation({colorScheme}: { colorScheme: ColorSchemeName }) {
     return (
@@ -37,8 +38,13 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Root" component={BottomTabNavigator} options={{headerShown: false}}/>
-            <Stack.Screen name="NotFound" component={NotFoundScreen} options={{title: 'Oops!'}}/>
+            <Stack.Group>
+                <Stack.Screen name="Root" component={BottomTabNavigator} options={{headerShown: false}}/>
+                <Stack.Screen name="NotFound" component={NotFoundScreen} options={{title: 'Oops!'}}/>
+            </Stack.Group>
+            <Stack.Group screenOptions={{presentation: 'modal'}} >
+                <Stack.Screen name="Search" component={SearchModal} options={{title: 'Search'}}/>
+            </Stack.Group>
         </Stack.Navigator>
     );
 }
@@ -63,16 +69,24 @@ function BottomTabNavigator() {
                 component={BeerStack}
                 options={{
                     title: 'Beers',
-                    tabBarIcon: ({color}) => <TabBarIcon name="code" color={color}/>
+                    tabBarIcon: ({color}) => <TabBarIcon name='image' color={color}/>,
+
                 }}
             />
             <BottomTab.Screen
                 name="ListBeers"
                 component={ListBeersStack}
-                options={{
+                options={({ navigation }) => ({
                     title: 'List Beers',
-                    tabBarIcon: ({color}) => <TabBarIcon name="code" color={color}/>,
-                }}
+                    tabBarIcon: ({color}) => <TabBarIcon name="list" color={color}/>,
+                    headerRight: () => (
+                        <Button
+                            onPress={() => navigation.navigate('Search')}
+                            title="Search"
+                            color="#000"
+                        />
+                    )
+                })}
             />
         </BottomTab.Navigator>
     );

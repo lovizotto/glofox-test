@@ -2,7 +2,7 @@ import * as React from 'react';
 import {RemoteGetRandomBeer} from "../../../data/usecases/RemoteGetRandomBeer";
 import {RootTabScreenProps} from "../../../../types";
 import BeerScreen from "./BeerScreen";
-import {AxiosImpl} from "../../../infra/http/impl/AxiosImpl";
+import {AxiosImpl} from "../../../infra/http/AxiosImpl";
 
 const tmpAPI_URL = "https://api.punkapi.com/v2"
 

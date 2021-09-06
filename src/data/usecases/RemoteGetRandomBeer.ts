@@ -1,6 +1,6 @@
 import {GetRandomBeer} from "../../domain/usecases/GetRandomBeer";
 import {Beer} from "../../domain/models/Beer";
-import {AxiosImpl} from "../../infra/http/impl/AxiosImpl";
+import {AxiosImpl} from "../../infra/http/AxiosImpl";
 
 export class RemoteGetRandomBeer implements GetRandomBeer {
     constructor(

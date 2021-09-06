@@ -1,6 +1,5 @@
 export interface HttpClient {
-    get?: (params: HttpClient.Params) => Promise<any>
-    fetch?: (params: HttpClient.Params) => Promise<any>
+    get: (params: HttpClient.Params) => Promise<any>
 }
 
 export namespace HttpClient {
@@ -8,6 +7,7 @@ export namespace HttpClient {
         url: string,
         headers? : {
             [key: string]: string
-        }
+        },
+        params?: any
     }
 }
