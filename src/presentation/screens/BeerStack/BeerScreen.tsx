@@ -74,7 +74,10 @@ const BeerScreen: React.FC<BeersScreenProps> = ({getRandomBeer}) => {
     );
 }
 
-const SuggestionButton: React.FC = ({ onPress }) => {
+type SuggestionButtonProps = {
+    onPress: any
+}
+const SuggestionButton: React.FC<SuggestionButtonProps> = ({ onPress }) => {
     return (
         <TouchableOpacity style={{
             height: 40,
