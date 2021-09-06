@@ -18,13 +18,16 @@ import LinkingConfiguration from './LinkingConfiguration';
 import BeerStack from "../screens/BeerStack";
 import ListBeersStack from "../screens/ListBeersStack";
 import SearchModal from "../screens/ListBeersStack/SearchModal";
+import GlobalContextProvider from "../screens/GlobalContext";
 
 export default function Navigation({colorScheme}: { colorScheme: ColorSchemeName }) {
     return (
         <NavigationContainer
             linking={LinkingConfiguration}
             theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-            <RootNavigator/>
+            <GlobalContextProvider value={{}}>
+                <RootNavigator/>
+            </GlobalContextProvider>
         </NavigationContainer>
     );
 }

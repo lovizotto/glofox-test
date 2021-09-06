@@ -11,13 +11,12 @@ export class RemoteGetRandomBeer implements GetRandomBeer {
 
     async get(params?: GetRandomBeer.Params): Promise<Beer> {
         const response = await this.getBeerHttp.get({
-            url: this.url,
+            url: params?.url || this.url,
             headers: {
                 "Content-Type": "text/json"
-            }
+            },
         })
 
         return <Beer>{...response.data?.[0]}
     }
-
 }

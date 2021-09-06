@@ -6,6 +6,6 @@ export interface GetRandomBeer {
 
 export namespace GetRandomBeer {
     export type Params = {
-        isAlcoholic?: boolean
+        url: string
     }
 }

@@ -4,7 +4,7 @@ import {RootTabScreenProps} from "../../../../types";
 import BeerScreen from "./BeerScreen";
 import {AxiosImpl} from "../../../infra/http/AxiosImpl";
 
-const tmpAPI_URL = "https://api.punkapi.com/v2"
+export const tmpAPI_URL = "https://api.punkapi.com/v2"
 
 const BeerStack = ({ navigation }: RootTabScreenProps<'Beers'>) => {
     const getBeerHttp = new AxiosImpl();

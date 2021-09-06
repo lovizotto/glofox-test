@@ -10,14 +10,19 @@ export class RemoteFetchBeers implements FetchBeers {
     }
 
     async fetch(params?: FetchBeers.Params): Promise<any> {
+        console.log(params)
         const response = await this.fetchBeerHttp.get({
             url: this.url,
             headers: {
                 "Content-Type": "text/json"
             },
-            params
+            params: {
+                beer_name: params?.name,
+                brewed_before: params?.date,
+                page: params?.page
+            }
         })
-
+        console.log(response.data)
         return response.data
     }
 
